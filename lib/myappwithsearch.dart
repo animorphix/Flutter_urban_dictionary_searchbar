@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -8,11 +7,9 @@ import 'word_model.dart';
 class MyAppws extends StatelessWidget {
   const MyAppws({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -60,13 +57,14 @@ class _MyHomePageState extends State<MyHomePage> {
     final response = await http
         .get(Uri.parse(req), headers: {"Access-Control-Allow-Origin": "*"});
 
-    if (response.contentLength != null /*&& response.contentLength! > 10*/) {
+    if (response.contentLength != null) {
       var decoded = jsonDecode(response.body);
 
       if (decoded["list"] == null && decoded["list"].isEmpty) {
         responseIsEmpty = true;
       } else {
         var rest = decoded["list"] as List;
+        print(rest.length);
         if (response.statusCode == 200) {
           Words(rest);
         } else {
@@ -96,23 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
+            const SizedBox(width: 10, height: 30),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Container(
-                //   child: const Center(
-                //     child: Text(
-                //       "Search for definitions \n from Urban Dictionary",
-                //       style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
-                //     ),
-                //   ),
-                //   color: Colors.blue[200],
-                //   height: 100,
-                // ),
-                // const SizedBox(
-                //   height: 25,
-                // ),
                 Expanded(
                   child: TextField(
                     cursorColor: Colors.white,
@@ -164,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "http://api.urbandictionary.com/v0/define?term=${_textController.text}";
                         });
                         fetchWord();
-                        await Future.delayed(const Duration(seconds: 3));
+                        await Future.delayed(const Duration(seconds: 1));
 
                         Navigator.of(context).pop();
 
@@ -215,8 +201,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
                   Image.asset(
-                    'images/1233.png',
+                    './assets/images/1233.png',
                     height: 200,
+                    width: 200,
                   ),
                   const SizedBox(height: 10),
                   const Text(
@@ -246,46 +233,13 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue[500],
-        // appBar: AppBar(
-        //   backgroundColor: Colors.blue[500],
-        //   title: const Text(
-        //     "Definitions",
-        //     textAlign: TextAlign.center,
-        //   ),
-        // ),
         body: Center(
             child:
-                // responseIsEmpty == true || words.isEmpty
                 //     ? Container(
-                //         decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(30),
-                //             color: Colors.blue[500],
-                //             boxShadow: [
-                //               BoxShadow(
-                //                 color: Colors.blue.shade800,
-                //                 offset: Offset(4, 4),
-                //                 blurRadius: 15,
-                //                 spreadRadius: 1,
-                //               ),
-                //               BoxShadow(
-                //                 color: Colors.blue.shade300,
-                //                 offset: Offset(-4, -4),
-                //                 blurRadius: 15,
-                //                 spreadRadius: 1,
-                //               )
-                //             ]),
-                //         padding: const EdgeInsets.all(50),
-                //         margin: const EdgeInsets.all(50),
-                //         child: const Center(
-                //             child: Text(
-                //           "No search has been submitted or the dictionary doesn't contain any definitions for your search, return to the home page and try again",
-                //           textAlign: TextAlign.center,
-                //         )))
-                //     :
                 Column(
           children: [
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             ButtonTheme(
               height: 60,

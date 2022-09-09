@@ -44,20 +44,6 @@ class WordCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: Colors.blue[500],
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.blue.shade500,
-        //     offset: Offset(4, 4),
-        //     blurRadius: 15,
-        //     spreadRadius: 1,
-        //   ),
-        //   BoxShadow(
-        //     color: Colors.blue.shade300,
-        //     offset: Offset(-4, -4),
-        //     blurRadius: 15,
-        //     spreadRadius: 1,
-        //   )
-        // ]
       ),
       child: Column(
         children: [
@@ -125,7 +111,6 @@ class WordCard extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(height: 20),
           Container(
               padding: EdgeInsets.all(15),
@@ -164,30 +149,6 @@ class WordCard extends StatelessWidget {
                   ),
                 ],
               )),
-
-          // Container(
-          //     padding: EdgeInsets.all(15),
-          //     width: double.infinity,
-          //     decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(30),
-          //         color: Colors.blue[500],
-          //         boxShadow: [
-          //           BoxShadow(
-          //             color: Colors.blue.shade800,
-          //             offset: Offset(4, 4),
-          //             blurRadius: 15,
-          //             spreadRadius: 1,
-          //           ),
-          //           BoxShadow(
-          //             color: Colors.blue.shade300,
-          //             offset: Offset(-4, -4),
-          //             blurRadius: 15,
-          //             spreadRadius: 1,
-          //           )
-          //         ]),
-          //     child: Text(example,
-          //         textAlign: TextAlign.start,
-          //         style: TextStyle(color: Colors.blue[900]))),
           const SizedBox(height: 20),
           Container(
             padding: EdgeInsets.all(15),
